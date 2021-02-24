@@ -46,9 +46,16 @@ UART_HandleTypeDef huart2;
 
 uint16_t ButtonMatrixState = 0;
 uint32_t ButtonMatrixTimestamp = 0;
-int number;
+uint32_t Timestamp = 0;
+uint32_t Timestamp2 = 0;
+GPIO_TypeDef*ID[11] = {0};
+GPIO_TypeDef*MY_ID[11] = {6,2,3,4,0,5,0,0,0,0,9};
+int number = 0;
+int count = 0;
+int check = 0;
 int OK;
-int clear;
+int count_count = 0;
+int ON_LED;
 
 /* USER CODE END PV */
 
@@ -100,65 +107,146 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-	while (1) {
-		ButtonMatrixUpdate();
-
-		if (HAL_GetTick() - ButtonMatrixTimestamp >= 100)
-		{
-			ButtonMatrixTimestamp = HAL_GetTick();
-			if(ButtonMatrixState == 4)
-			{
-				number = 9;
-			}
-			if(ButtonMatrixState == 2)
-			{
-				number = 8;
-			}
-			if(ButtonMatrixState == 1)
-			{
-				number = 7;
-			}
-			if(ButtonMatrixState == 64)
-			{
-				number = 6;
-			}
-			if(ButtonMatrixState == 32)
-			{
-				number = 5;
-			}
-			if(ButtonMatrixState == 16)
-			{
-				number = 4;
-			}
-			if(ButtonMatrixState == 1024)
-			{
-				number = 3;
-			}
-			if(ButtonMatrixState == 512)
-			{
-				number = 2;
-			}
-			if(ButtonMatrixState == 256)
-			{
-				number = 1;
-			}
-			if(ButtonMatrixState == 4096)
-			{
-				number = 0;
-			}
-			if(ButtonMatrixState == 8)
-			{
-				clear = 1;
-			}
-			if(ButtonMatrixState == 32768)
-			{
-				OK = 1;
-			}
-		}
+	while (1)
+	{
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
 		ButtonMatrixUpdate();
+
+		if (HAL_GetTick() - Timestamp >= 400)
+		{
+			if (ButtonMatrixState == 4)
+			{
+				number = 9;
+				ID[count] = 9;
+				count += 1;
+				count_count += 1;
+				Timestamp = HAL_GetTick();
+			}
+			if (ButtonMatrixState == 2)
+			{
+				number = 8;
+				ID[count] = 8;
+				count += 1;
+				count_count += 1;
+				Timestamp = HAL_GetTick();
+			}
+			if (ButtonMatrixState == 1)
+			{
+				number = 7;
+				ID[count] = 7;
+				count += 1;
+				count_count += 1;
+				Timestamp = HAL_GetTick();
+			}
+			if (ButtonMatrixState == 64)
+			{
+				number = 6;
+				ID[count] = 6;
+				count += 1;
+				count_count += 1;
+				Timestamp = HAL_GetTick();
+			}
+			if (ButtonMatrixState == 32)
+			{
+				number = 5;
+				ID[count] = 5;
+				count += 1;
+				count_count += 1;
+				Timestamp = HAL_GetTick();
+			}
+			if (ButtonMatrixState == 16)
+			{
+				number = 4;
+				ID[count] = 4;
+				count += 1;
+				count_count += 1;
+				Timestamp = HAL_GetTick();
+			}
+			if (ButtonMatrixState == 1024)
+			{
+				number = 3;
+				ID[count] = 3;
+				count += 1;
+				count_count += 1;
+				Timestamp = HAL_GetTick();
+			}
+			if (ButtonMatrixState == 512)
+			{
+				number = 2;
+				ID[count] = 2;
+				count += 1;
+				count_count += 1;
+				Timestamp = HAL_GetTick();
+			}
+			if (ButtonMatrixState == 256)
+			{
+				number = 1;
+				ID[count] = 1;
+				count += 1;
+				count_count += 1;
+				Timestamp = HAL_GetTick();
+			}
+			if (ButtonMatrixState == 4096)
+			{
+				number = 0;
+				ID[count] = 0;
+				count += 1;
+				count_count += 1;
+				Timestamp = HAL_GetTick();
+			}
+		}
+		if (count > 11)
+		{
+			check = 0;
+			count_count = count;
+		}
+		if (count_count == 11)
+		{
+			int i;
+			for (i = 0 ; i < 11 ; i += 1)
+			{
+				if(MY_ID[i] == ID[i])
+				{
+					check += 1;
+				}
+				if (check == 11)
+				{
+					count_count = 0;
+				}
+			}
+		}
+		if (check == 11)
+		{
+			if (HAL_GetTick() - Timestamp2 >= 400)
+			{
+				if (ButtonMatrixState == 32768)
+				{
+					ON_LED = 1;
+					OK = 1;
+					Timestamp2 = HAL_GetTick();
+				}
+			}
+		}
+		if (ON_LED == 1)
+		{
+			check = 0;
+			count = 0;
+			ID[0] = 0 , ID[1] = 0 , ID[2] = 0 , ID[3] = 0 , ID[4] = 0 , ID[5] = 0
+					, ID[6] = 0 , ID[7] = 0 , ID[8] = 0 , ID[9] = 0 , ID[10] = 0;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+		}
+		if (ButtonMatrixState == 8)
+		{
+			OK = 0;
+			ON_LED = 0;
+			count = 0;
+			count_count = 0;
+			check = 0;
+			number = 0;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+		}
 	}
   /* USER CODE END 3 */
 }
@@ -256,13 +344,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, LD2_Pin|GPIO_PIN_7|GPIO_PIN_9, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_7|GPIO_PIN_9, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, GPIO_PIN_SET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -313,7 +404,7 @@ GPIO_PIN_9, GPIO_PIN_7, GPIO_PIN_6, GPIO_PIN_7 };
 uint8_t ButtonMatrixRow = 0;
 
 void ButtonMatrixUpdate() {
-	if (HAL_GetTick() - ButtonMatrixTimestamp >= 100) {
+	if (HAL_GetTick() - ButtonMatrixTimestamp >= 50) {
 		ButtonMatrixTimestamp = HAL_GetTick();
 		int i;
 		for (i = 0; i < 4; ++i) {
