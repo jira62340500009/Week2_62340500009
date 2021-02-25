@@ -245,6 +245,8 @@ int main(void)
 			count_count = 0;
 			check = 0;
 			number = 0;
+			ID[0] = 0 , ID[1] = 0 , ID[2] = 0 , ID[3] = 0 , ID[4] = 0 , ID[5] = 0
+								, ID[6] = 0 , ID[7] = 0 , ID[8] = 0 , ID[9] = 0 , ID[10] = 0;
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 		}
 	}
