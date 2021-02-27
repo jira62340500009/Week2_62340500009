@@ -9,27 +9,27 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
   2 .rodata       00000018  08002560  08002560  00012560  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08002578  08002578  00020068  2**0
+  3 .ARM.extab    00000000  08002578  08002578  00020054  2**0
                   CONTENTS
   4 .ARM          00000008  08002578  08002578  00012578  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08002580  08002580  00020068  2**0
+  5 .preinit_array 00000000  08002580  08002580  00020054  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   6 .init_array   00000004  08002580  08002580  00012580  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   7 .fini_array   00000004  08002584  08002584  00012584  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         00000068  20000000  08002588  00020000  2**2
+  8 .data         00000054  20000000  08002588  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  9 .bss          000000b8  20000068  080025f0  00020068  2**2
+  9 .bss          000000b8  20000054  080025dc  00020054  2**2
                   ALLOC
- 10 ._user_heap_stack 00000600  20000120  080025f0  00020120  2**0
+ 10 ._user_heap_stack 00000604  2000010c  080025dc  0002010c  2**0
                   ALLOC
- 11 .ARM.attributes 00000030  00000000  00000000  00020068  2**0
+ 11 .ARM.attributes 00000030  00000000  00000000  00020054  2**0
                   CONTENTS, READONLY
- 12 .debug_info   000057fb  00000000  00000000  00020098  2**0
+ 12 .debug_info   0000580b  00000000  00000000  00020084  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 0000112a  00000000  00000000  00025893  2**0
+ 13 .debug_abbrev 0000112a  00000000  00000000  0002588f  2**0
                   CONTENTS, READONLY, DEBUGGING
  14 .debug_aranges 000005e0  00000000  00000000  000269c0  2**3
                   CONTENTS, READONLY, DEBUGGING
@@ -60,7 +60,7 @@ Disassembly of section .text:
  80001aa:	2301      	movs	r3, #1
  80001ac:	7023      	strb	r3, [r4, #0]
  80001ae:	bd10      	pop	{r4, pc}
- 80001b0:	20000068 	.word	0x20000068
+ 80001b0:	20000054 	.word	0x20000054
  80001b4:	00000000 	.word	0x00000000
  80001b8:	08002548 	.word	0x08002548
 
@@ -73,7 +73,7 @@ Disassembly of section .text:
  80001c6:	f3af 8000 	nop.w
  80001ca:	bd08      	pop	{r3, pc}
  80001cc:	00000000 	.word	0x00000000
- 80001d0:	2000006c 	.word	0x2000006c
+ 80001d0:	20000058 	.word	0x20000058
  80001d4:	08002548 	.word	0x08002548
 
 080001d8 <__aeabi_uldivmod>:
@@ -764,235 +764,235 @@ int main(void)
  8000754:	4b08      	ldr	r3, [pc, #32]	; (8000778 <main+0x2a0>)
  8000756:	681b      	ldr	r3, [r3, #0]
  8000758:	2b0b      	cmp	r3, #11
- 800075a:	d12d      	bne.n	80007b8 <main+0x2e0>
+ 800075a:	d12e      	bne.n	80007ba <main+0x2e2>
 		{
 			int i;
 			for (i = 0 ; i < 11 ; i += 1)
  800075c:	2300      	movs	r3, #0
  800075e:	607b      	str	r3, [r7, #4]
- 8000760:	e027      	b.n	80007b2 <main+0x2da>
+ 8000760:	e028      	b.n	80007b4 <main+0x2dc>
  8000762:	bf00      	nop
- 8000764:	2000008c 	.word	0x2000008c
- 8000768:	20000084 	.word	0x20000084
- 800076c:	200000c0 	.word	0x200000c0
- 8000770:	200000c4 	.word	0x200000c4
- 8000774:	20000094 	.word	0x20000094
- 8000778:	200000cc 	.word	0x200000cc
- 800077c:	200000c8 	.word	0x200000c8
+ 8000764:	20000078 	.word	0x20000078
+ 8000768:	20000070 	.word	0x20000070
+ 800076c:	200000ac 	.word	0x200000ac
+ 8000770:	200000b0 	.word	0x200000b0
+ 8000774:	20000080 	.word	0x20000080
+ 8000778:	200000b8 	.word	0x200000b8
+ 800077c:	200000b4 	.word	0x200000b4
 			{
 				if(MY_ID[i] == ID[i])
  8000780:	4a53      	ldr	r2, [pc, #332]	; (80008d0 <main+0x3f8>)
  8000782:	687b      	ldr	r3, [r7, #4]
- 8000784:	f852 2023 	ldr.w	r2, [r2, r3, lsl #2]
- 8000788:	4952      	ldr	r1, [pc, #328]	; (80008d4 <main+0x3fc>)
- 800078a:	687b      	ldr	r3, [r7, #4]
- 800078c:	f851 3023 	ldr.w	r3, [r1, r3, lsl #2]
- 8000790:	429a      	cmp	r2, r3
- 8000792:	d104      	bne.n	800079e <main+0x2c6>
+ 8000784:	f832 3013 	ldrh.w	r3, [r2, r3, lsl #1]
+ 8000788:	4619      	mov	r1, r3
+ 800078a:	4a52      	ldr	r2, [pc, #328]	; (80008d4 <main+0x3fc>)
+ 800078c:	687b      	ldr	r3, [r7, #4]
+ 800078e:	f852 3023 	ldr.w	r3, [r2, r3, lsl #2]
+ 8000792:	4299      	cmp	r1, r3
+ 8000794:	d104      	bne.n	80007a0 <main+0x2c8>
 				{
 					check += 1;
- 8000794:	4b50      	ldr	r3, [pc, #320]	; (80008d8 <main+0x400>)
- 8000796:	681b      	ldr	r3, [r3, #0]
- 8000798:	3301      	adds	r3, #1
- 800079a:	4a4f      	ldr	r2, [pc, #316]	; (80008d8 <main+0x400>)
- 800079c:	6013      	str	r3, [r2, #0]
+ 8000796:	4b50      	ldr	r3, [pc, #320]	; (80008d8 <main+0x400>)
+ 8000798:	681b      	ldr	r3, [r3, #0]
+ 800079a:	3301      	adds	r3, #1
+ 800079c:	4a4e      	ldr	r2, [pc, #312]	; (80008d8 <main+0x400>)
+ 800079e:	6013      	str	r3, [r2, #0]
 				}
 				if (check == 11)
- 800079e:	4b4e      	ldr	r3, [pc, #312]	; (80008d8 <main+0x400>)
- 80007a0:	681b      	ldr	r3, [r3, #0]
- 80007a2:	2b0b      	cmp	r3, #11
- 80007a4:	d102      	bne.n	80007ac <main+0x2d4>
+ 80007a0:	4b4d      	ldr	r3, [pc, #308]	; (80008d8 <main+0x400>)
+ 80007a2:	681b      	ldr	r3, [r3, #0]
+ 80007a4:	2b0b      	cmp	r3, #11
+ 80007a6:	d102      	bne.n	80007ae <main+0x2d6>
 				{
 					count_count = 0;
- 80007a6:	4b4d      	ldr	r3, [pc, #308]	; (80008dc <main+0x404>)
- 80007a8:	2200      	movs	r2, #0
- 80007aa:	601a      	str	r2, [r3, #0]
+ 80007a8:	4b4c      	ldr	r3, [pc, #304]	; (80008dc <main+0x404>)
+ 80007aa:	2200      	movs	r2, #0
+ 80007ac:	601a      	str	r2, [r3, #0]
 			for (i = 0 ; i < 11 ; i += 1)
- 80007ac:	687b      	ldr	r3, [r7, #4]
- 80007ae:	3301      	adds	r3, #1
- 80007b0:	607b      	str	r3, [r7, #4]
- 80007b2:	687b      	ldr	r3, [r7, #4]
- 80007b4:	2b0a      	cmp	r3, #10
- 80007b6:	dde3      	ble.n	8000780 <main+0x2a8>
+ 80007ae:	687b      	ldr	r3, [r7, #4]
+ 80007b0:	3301      	adds	r3, #1
+ 80007b2:	607b      	str	r3, [r7, #4]
+ 80007b4:	687b      	ldr	r3, [r7, #4]
+ 80007b6:	2b0a      	cmp	r3, #10
+ 80007b8:	dde2      	ble.n	8000780 <main+0x2a8>
 				}
 			}
 		}
 		if (check == 11)
- 80007b8:	4b47      	ldr	r3, [pc, #284]	; (80008d8 <main+0x400>)
- 80007ba:	681b      	ldr	r3, [r3, #0]
- 80007bc:	2b0b      	cmp	r3, #11
- 80007be:	d118      	bne.n	80007f2 <main+0x31a>
+ 80007ba:	4b47      	ldr	r3, [pc, #284]	; (80008d8 <main+0x400>)
+ 80007bc:	681b      	ldr	r3, [r3, #0]
+ 80007be:	2b0b      	cmp	r3, #11
+ 80007c0:	d118      	bne.n	80007f4 <main+0x31c>
 		{
 			if (HAL_GetTick() - Timestamp2 >= 400)
- 80007c0:	f000 fbc4 	bl	8000f4c <HAL_GetTick>
- 80007c4:	4602      	mov	r2, r0
- 80007c6:	4b46      	ldr	r3, [pc, #280]	; (80008e0 <main+0x408>)
- 80007c8:	681b      	ldr	r3, [r3, #0]
- 80007ca:	1ad3      	subs	r3, r2, r3
- 80007cc:	f5b3 7fc8 	cmp.w	r3, #400	; 0x190
- 80007d0:	d30f      	bcc.n	80007f2 <main+0x31a>
+ 80007c2:	f000 fbc3 	bl	8000f4c <HAL_GetTick>
+ 80007c6:	4602      	mov	r2, r0
+ 80007c8:	4b45      	ldr	r3, [pc, #276]	; (80008e0 <main+0x408>)
+ 80007ca:	681b      	ldr	r3, [r3, #0]
+ 80007cc:	1ad3      	subs	r3, r2, r3
+ 80007ce:	f5b3 7fc8 	cmp.w	r3, #400	; 0x190
+ 80007d2:	d30f      	bcc.n	80007f4 <main+0x31c>
 			{
 				if (ButtonMatrixState == 32768)
- 80007d2:	4b44      	ldr	r3, [pc, #272]	; (80008e4 <main+0x40c>)
- 80007d4:	881b      	ldrh	r3, [r3, #0]
- 80007d6:	f5b3 4f00 	cmp.w	r3, #32768	; 0x8000
- 80007da:	d10a      	bne.n	80007f2 <main+0x31a>
+ 80007d4:	4b43      	ldr	r3, [pc, #268]	; (80008e4 <main+0x40c>)
+ 80007d6:	881b      	ldrh	r3, [r3, #0]
+ 80007d8:	f5b3 4f00 	cmp.w	r3, #32768	; 0x8000
+ 80007dc:	d10a      	bne.n	80007f4 <main+0x31c>
 				{
 					ON_LED = 1;
- 80007dc:	4b42      	ldr	r3, [pc, #264]	; (80008e8 <main+0x410>)
- 80007de:	2201      	movs	r2, #1
- 80007e0:	601a      	str	r2, [r3, #0]
+ 80007de:	4b42      	ldr	r3, [pc, #264]	; (80008e8 <main+0x410>)
+ 80007e0:	2201      	movs	r2, #1
+ 80007e2:	601a      	str	r2, [r3, #0]
 					OK = 1;
- 80007e2:	4b42      	ldr	r3, [pc, #264]	; (80008ec <main+0x414>)
- 80007e4:	2201      	movs	r2, #1
- 80007e6:	601a      	str	r2, [r3, #0]
+ 80007e4:	4b41      	ldr	r3, [pc, #260]	; (80008ec <main+0x414>)
+ 80007e6:	2201      	movs	r2, #1
+ 80007e8:	601a      	str	r2, [r3, #0]
 					Timestamp2 = HAL_GetTick();
- 80007e8:	f000 fbb0 	bl	8000f4c <HAL_GetTick>
- 80007ec:	4602      	mov	r2, r0
- 80007ee:	4b3c      	ldr	r3, [pc, #240]	; (80008e0 <main+0x408>)
- 80007f0:	601a      	str	r2, [r3, #0]
+ 80007ea:	f000 fbaf 	bl	8000f4c <HAL_GetTick>
+ 80007ee:	4602      	mov	r2, r0
+ 80007f0:	4b3b      	ldr	r3, [pc, #236]	; (80008e0 <main+0x408>)
+ 80007f2:	601a      	str	r2, [r3, #0]
 				}
 			}
 		}
 		if (ON_LED == 1)
- 80007f2:	4b3d      	ldr	r3, [pc, #244]	; (80008e8 <main+0x410>)
- 80007f4:	681b      	ldr	r3, [r3, #0]
- 80007f6:	2b01      	cmp	r3, #1
- 80007f8:	d12b      	bne.n	8000852 <main+0x37a>
+ 80007f4:	4b3c      	ldr	r3, [pc, #240]	; (80008e8 <main+0x410>)
+ 80007f6:	681b      	ldr	r3, [r3, #0]
+ 80007f8:	2b01      	cmp	r3, #1
+ 80007fa:	d12b      	bne.n	8000854 <main+0x37c>
 		{
 			check = 0;
- 80007fa:	4b37      	ldr	r3, [pc, #220]	; (80008d8 <main+0x400>)
- 80007fc:	2200      	movs	r2, #0
- 80007fe:	601a      	str	r2, [r3, #0]
+ 80007fc:	4b36      	ldr	r3, [pc, #216]	; (80008d8 <main+0x400>)
+ 80007fe:	2200      	movs	r2, #0
+ 8000800:	601a      	str	r2, [r3, #0]
 			count = 0;
- 8000800:	4b3b      	ldr	r3, [pc, #236]	; (80008f0 <main+0x418>)
- 8000802:	2200      	movs	r2, #0
- 8000804:	601a      	str	r2, [r3, #0]
+ 8000802:	4b3b      	ldr	r3, [pc, #236]	; (80008f0 <main+0x418>)
+ 8000804:	2200      	movs	r2, #0
+ 8000806:	601a      	str	r2, [r3, #0]
 			ID[0] = 0 , ID[1] = 0 , ID[2] = 0 , ID[3] = 0 , ID[4] = 0 , ID[5] = 0
- 8000806:	4b33      	ldr	r3, [pc, #204]	; (80008d4 <main+0x3fc>)
- 8000808:	2200      	movs	r2, #0
- 800080a:	601a      	str	r2, [r3, #0]
- 800080c:	4b31      	ldr	r3, [pc, #196]	; (80008d4 <main+0x3fc>)
- 800080e:	2200      	movs	r2, #0
- 8000810:	605a      	str	r2, [r3, #4]
- 8000812:	4b30      	ldr	r3, [pc, #192]	; (80008d4 <main+0x3fc>)
- 8000814:	2200      	movs	r2, #0
- 8000816:	609a      	str	r2, [r3, #8]
- 8000818:	4b2e      	ldr	r3, [pc, #184]	; (80008d4 <main+0x3fc>)
- 800081a:	2200      	movs	r2, #0
- 800081c:	60da      	str	r2, [r3, #12]
- 800081e:	4b2d      	ldr	r3, [pc, #180]	; (80008d4 <main+0x3fc>)
- 8000820:	2200      	movs	r2, #0
- 8000822:	611a      	str	r2, [r3, #16]
- 8000824:	4b2b      	ldr	r3, [pc, #172]	; (80008d4 <main+0x3fc>)
- 8000826:	2200      	movs	r2, #0
- 8000828:	615a      	str	r2, [r3, #20]
+ 8000808:	4b32      	ldr	r3, [pc, #200]	; (80008d4 <main+0x3fc>)
+ 800080a:	2200      	movs	r2, #0
+ 800080c:	601a      	str	r2, [r3, #0]
+ 800080e:	4b31      	ldr	r3, [pc, #196]	; (80008d4 <main+0x3fc>)
+ 8000810:	2200      	movs	r2, #0
+ 8000812:	605a      	str	r2, [r3, #4]
+ 8000814:	4b2f      	ldr	r3, [pc, #188]	; (80008d4 <main+0x3fc>)
+ 8000816:	2200      	movs	r2, #0
+ 8000818:	609a      	str	r2, [r3, #8]
+ 800081a:	4b2e      	ldr	r3, [pc, #184]	; (80008d4 <main+0x3fc>)
+ 800081c:	2200      	movs	r2, #0
+ 800081e:	60da      	str	r2, [r3, #12]
+ 8000820:	4b2c      	ldr	r3, [pc, #176]	; (80008d4 <main+0x3fc>)
+ 8000822:	2200      	movs	r2, #0
+ 8000824:	611a      	str	r2, [r3, #16]
+ 8000826:	4b2b      	ldr	r3, [pc, #172]	; (80008d4 <main+0x3fc>)
+ 8000828:	2200      	movs	r2, #0
+ 800082a:	615a      	str	r2, [r3, #20]
 					, ID[6] = 0 , ID[7] = 0 , ID[8] = 0 , ID[9] = 0 , ID[10] = 0;
- 800082a:	4b2a      	ldr	r3, [pc, #168]	; (80008d4 <main+0x3fc>)
- 800082c:	2200      	movs	r2, #0
- 800082e:	619a      	str	r2, [r3, #24]
- 8000830:	4b28      	ldr	r3, [pc, #160]	; (80008d4 <main+0x3fc>)
- 8000832:	2200      	movs	r2, #0
- 8000834:	61da      	str	r2, [r3, #28]
- 8000836:	4b27      	ldr	r3, [pc, #156]	; (80008d4 <main+0x3fc>)
- 8000838:	2200      	movs	r2, #0
- 800083a:	621a      	str	r2, [r3, #32]
- 800083c:	4b25      	ldr	r3, [pc, #148]	; (80008d4 <main+0x3fc>)
- 800083e:	2200      	movs	r2, #0
- 8000840:	625a      	str	r2, [r3, #36]	; 0x24
- 8000842:	4b24      	ldr	r3, [pc, #144]	; (80008d4 <main+0x3fc>)
- 8000844:	2200      	movs	r2, #0
- 8000846:	629a      	str	r2, [r3, #40]	; 0x28
+ 800082c:	4b29      	ldr	r3, [pc, #164]	; (80008d4 <main+0x3fc>)
+ 800082e:	2200      	movs	r2, #0
+ 8000830:	619a      	str	r2, [r3, #24]
+ 8000832:	4b28      	ldr	r3, [pc, #160]	; (80008d4 <main+0x3fc>)
+ 8000834:	2200      	movs	r2, #0
+ 8000836:	61da      	str	r2, [r3, #28]
+ 8000838:	4b26      	ldr	r3, [pc, #152]	; (80008d4 <main+0x3fc>)
+ 800083a:	2200      	movs	r2, #0
+ 800083c:	621a      	str	r2, [r3, #32]
+ 800083e:	4b25      	ldr	r3, [pc, #148]	; (80008d4 <main+0x3fc>)
+ 8000840:	2200      	movs	r2, #0
+ 8000842:	625a      	str	r2, [r3, #36]	; 0x24
+ 8000844:	4b23      	ldr	r3, [pc, #140]	; (80008d4 <main+0x3fc>)
+ 8000846:	2200      	movs	r2, #0
+ 8000848:	629a      	str	r2, [r3, #40]	; 0x28
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
- 8000848:	2201      	movs	r2, #1
- 800084a:	2120      	movs	r1, #32
- 800084c:	4829      	ldr	r0, [pc, #164]	; (80008f4 <main+0x41c>)
- 800084e:	f000 fe09 	bl	8001464 <HAL_GPIO_WritePin>
+ 800084a:	2201      	movs	r2, #1
+ 800084c:	2120      	movs	r1, #32
+ 800084e:	4829      	ldr	r0, [pc, #164]	; (80008f4 <main+0x41c>)
+ 8000850:	f000 fe08 	bl	8001464 <HAL_GPIO_WritePin>
 		}
 		if (ButtonMatrixState == 8)
- 8000852:	4b24      	ldr	r3, [pc, #144]	; (80008e4 <main+0x40c>)
- 8000854:	881b      	ldrh	r3, [r3, #0]
- 8000856:	2b08      	cmp	r3, #8
- 8000858:	f47f ae49 	bne.w	80004ee <main+0x16>
+ 8000854:	4b23      	ldr	r3, [pc, #140]	; (80008e4 <main+0x40c>)
+ 8000856:	881b      	ldrh	r3, [r3, #0]
+ 8000858:	2b08      	cmp	r3, #8
+ 800085a:	f47f ae48 	bne.w	80004ee <main+0x16>
 		{
 			OK = 0;
- 800085c:	4b23      	ldr	r3, [pc, #140]	; (80008ec <main+0x414>)
- 800085e:	2200      	movs	r2, #0
- 8000860:	601a      	str	r2, [r3, #0]
+ 800085e:	4b23      	ldr	r3, [pc, #140]	; (80008ec <main+0x414>)
+ 8000860:	2200      	movs	r2, #0
+ 8000862:	601a      	str	r2, [r3, #0]
 			ON_LED = 0;
- 8000862:	4b21      	ldr	r3, [pc, #132]	; (80008e8 <main+0x410>)
- 8000864:	2200      	movs	r2, #0
- 8000866:	601a      	str	r2, [r3, #0]
+ 8000864:	4b20      	ldr	r3, [pc, #128]	; (80008e8 <main+0x410>)
+ 8000866:	2200      	movs	r2, #0
+ 8000868:	601a      	str	r2, [r3, #0]
 			count = 0;
- 8000868:	4b21      	ldr	r3, [pc, #132]	; (80008f0 <main+0x418>)
- 800086a:	2200      	movs	r2, #0
- 800086c:	601a      	str	r2, [r3, #0]
+ 800086a:	4b21      	ldr	r3, [pc, #132]	; (80008f0 <main+0x418>)
+ 800086c:	2200      	movs	r2, #0
+ 800086e:	601a      	str	r2, [r3, #0]
 			count_count = 0;
- 800086e:	4b1b      	ldr	r3, [pc, #108]	; (80008dc <main+0x404>)
- 8000870:	2200      	movs	r2, #0
- 8000872:	601a      	str	r2, [r3, #0]
+ 8000870:	4b1a      	ldr	r3, [pc, #104]	; (80008dc <main+0x404>)
+ 8000872:	2200      	movs	r2, #0
+ 8000874:	601a      	str	r2, [r3, #0]
 			check = 0;
- 8000874:	4b18      	ldr	r3, [pc, #96]	; (80008d8 <main+0x400>)
- 8000876:	2200      	movs	r2, #0
- 8000878:	601a      	str	r2, [r3, #0]
+ 8000876:	4b18      	ldr	r3, [pc, #96]	; (80008d8 <main+0x400>)
+ 8000878:	2200      	movs	r2, #0
+ 800087a:	601a      	str	r2, [r3, #0]
 			number = 0;
- 800087a:	4b1f      	ldr	r3, [pc, #124]	; (80008f8 <main+0x420>)
- 800087c:	2200      	movs	r2, #0
- 800087e:	601a      	str	r2, [r3, #0]
+ 800087c:	4b1e      	ldr	r3, [pc, #120]	; (80008f8 <main+0x420>)
+ 800087e:	2200      	movs	r2, #0
+ 8000880:	601a      	str	r2, [r3, #0]
 			ID[0] = 0 , ID[1] = 0 , ID[2] = 0 , ID[3] = 0 , ID[4] = 0 , ID[5] = 0
- 8000880:	4b14      	ldr	r3, [pc, #80]	; (80008d4 <main+0x3fc>)
- 8000882:	2200      	movs	r2, #0
- 8000884:	601a      	str	r2, [r3, #0]
- 8000886:	4b13      	ldr	r3, [pc, #76]	; (80008d4 <main+0x3fc>)
- 8000888:	2200      	movs	r2, #0
- 800088a:	605a      	str	r2, [r3, #4]
- 800088c:	4b11      	ldr	r3, [pc, #68]	; (80008d4 <main+0x3fc>)
- 800088e:	2200      	movs	r2, #0
- 8000890:	609a      	str	r2, [r3, #8]
- 8000892:	4b10      	ldr	r3, [pc, #64]	; (80008d4 <main+0x3fc>)
- 8000894:	2200      	movs	r2, #0
- 8000896:	60da      	str	r2, [r3, #12]
- 8000898:	4b0e      	ldr	r3, [pc, #56]	; (80008d4 <main+0x3fc>)
- 800089a:	2200      	movs	r2, #0
- 800089c:	611a      	str	r2, [r3, #16]
- 800089e:	4b0d      	ldr	r3, [pc, #52]	; (80008d4 <main+0x3fc>)
- 80008a0:	2200      	movs	r2, #0
- 80008a2:	615a      	str	r2, [r3, #20]
+ 8000882:	4b14      	ldr	r3, [pc, #80]	; (80008d4 <main+0x3fc>)
+ 8000884:	2200      	movs	r2, #0
+ 8000886:	601a      	str	r2, [r3, #0]
+ 8000888:	4b12      	ldr	r3, [pc, #72]	; (80008d4 <main+0x3fc>)
+ 800088a:	2200      	movs	r2, #0
+ 800088c:	605a      	str	r2, [r3, #4]
+ 800088e:	4b11      	ldr	r3, [pc, #68]	; (80008d4 <main+0x3fc>)
+ 8000890:	2200      	movs	r2, #0
+ 8000892:	609a      	str	r2, [r3, #8]
+ 8000894:	4b0f      	ldr	r3, [pc, #60]	; (80008d4 <main+0x3fc>)
+ 8000896:	2200      	movs	r2, #0
+ 8000898:	60da      	str	r2, [r3, #12]
+ 800089a:	4b0e      	ldr	r3, [pc, #56]	; (80008d4 <main+0x3fc>)
+ 800089c:	2200      	movs	r2, #0
+ 800089e:	611a      	str	r2, [r3, #16]
+ 80008a0:	4b0c      	ldr	r3, [pc, #48]	; (80008d4 <main+0x3fc>)
+ 80008a2:	2200      	movs	r2, #0
+ 80008a4:	615a      	str	r2, [r3, #20]
 								, ID[6] = 0 , ID[7] = 0 , ID[8] = 0 , ID[9] = 0 , ID[10] = 0;
- 80008a4:	4b0b      	ldr	r3, [pc, #44]	; (80008d4 <main+0x3fc>)
- 80008a6:	2200      	movs	r2, #0
- 80008a8:	619a      	str	r2, [r3, #24]
- 80008aa:	4b0a      	ldr	r3, [pc, #40]	; (80008d4 <main+0x3fc>)
- 80008ac:	2200      	movs	r2, #0
- 80008ae:	61da      	str	r2, [r3, #28]
- 80008b0:	4b08      	ldr	r3, [pc, #32]	; (80008d4 <main+0x3fc>)
- 80008b2:	2200      	movs	r2, #0
- 80008b4:	621a      	str	r2, [r3, #32]
- 80008b6:	4b07      	ldr	r3, [pc, #28]	; (80008d4 <main+0x3fc>)
- 80008b8:	2200      	movs	r2, #0
- 80008ba:	625a      	str	r2, [r3, #36]	; 0x24
- 80008bc:	4b05      	ldr	r3, [pc, #20]	; (80008d4 <main+0x3fc>)
- 80008be:	2200      	movs	r2, #0
- 80008c0:	629a      	str	r2, [r3, #40]	; 0x28
+ 80008a6:	4b0b      	ldr	r3, [pc, #44]	; (80008d4 <main+0x3fc>)
+ 80008a8:	2200      	movs	r2, #0
+ 80008aa:	619a      	str	r2, [r3, #24]
+ 80008ac:	4b09      	ldr	r3, [pc, #36]	; (80008d4 <main+0x3fc>)
+ 80008ae:	2200      	movs	r2, #0
+ 80008b0:	61da      	str	r2, [r3, #28]
+ 80008b2:	4b08      	ldr	r3, [pc, #32]	; (80008d4 <main+0x3fc>)
+ 80008b4:	2200      	movs	r2, #0
+ 80008b6:	621a      	str	r2, [r3, #32]
+ 80008b8:	4b06      	ldr	r3, [pc, #24]	; (80008d4 <main+0x3fc>)
+ 80008ba:	2200      	movs	r2, #0
+ 80008bc:	625a      	str	r2, [r3, #36]	; 0x24
+ 80008be:	4b05      	ldr	r3, [pc, #20]	; (80008d4 <main+0x3fc>)
+ 80008c0:	2200      	movs	r2, #0
+ 80008c2:	629a      	str	r2, [r3, #40]	; 0x28
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
- 80008c2:	2200      	movs	r2, #0
- 80008c4:	2120      	movs	r1, #32
- 80008c6:	480b      	ldr	r0, [pc, #44]	; (80008f4 <main+0x41c>)
- 80008c8:	f000 fdcc 	bl	8001464 <HAL_GPIO_WritePin>
+ 80008c4:	2200      	movs	r2, #0
+ 80008c6:	2120      	movs	r1, #32
+ 80008c8:	480a      	ldr	r0, [pc, #40]	; (80008f4 <main+0x41c>)
+ 80008ca:	f000 fdcb 	bl	8001464 <HAL_GPIO_WritePin>
 		ButtonMatrixUpdate();
- 80008cc:	e60f      	b.n	80004ee <main+0x16>
- 80008ce:	bf00      	nop
+ 80008ce:	e60e      	b.n	80004ee <main+0x16>
  80008d0:	20000000 	.word	0x20000000
- 80008d4:	20000094 	.word	0x20000094
- 80008d8:	200000c8 	.word	0x200000c8
- 80008dc:	200000cc 	.word	0x200000cc
- 80008e0:	20000090 	.word	0x20000090
- 80008e4:	20000084 	.word	0x20000084
- 80008e8:	20000118 	.word	0x20000118
- 80008ec:	200000d4 	.word	0x200000d4
- 80008f0:	200000c4 	.word	0x200000c4
+ 80008d4:	20000080 	.word	0x20000080
+ 80008d8:	200000b4 	.word	0x200000b4
+ 80008dc:	200000b8 	.word	0x200000b8
+ 80008e0:	2000007c 	.word	0x2000007c
+ 80008e4:	20000070 	.word	0x20000070
+ 80008e8:	20000104 	.word	0x20000104
+ 80008ec:	200000c0 	.word	0x200000c0
+ 80008f0:	200000b0 	.word	0x200000b0
  80008f4:	40020000 	.word	0x40020000
- 80008f8:	200000c0 	.word	0x200000c0
+ 80008f8:	200000ac 	.word	0x200000ac
 
 080008fc <SystemClock_Config>:
 /**
@@ -1192,7 +1192,7 @@ static void MX_USART2_UART_Init(void)
  8000a16:	bf00      	nop
  8000a18:	bd80      	pop	{r7, pc}
  8000a1a:	bf00      	nop
- 8000a1c:	200000d8 	.word	0x200000d8
+ 8000a1c:	200000c4 	.word	0x200000c4
  8000a20:	40004400 	.word	0x40004400
 
 08000a24 <MX_GPIO_Init>:
@@ -1576,11 +1576,11 @@ void ButtonMatrixUpdate() {
  8000caa:	46bd      	mov	sp, r7
  8000cac:	bd80      	pop	{r7, pc}
  8000cae:	bf00      	nop
- 8000cb0:	20000088 	.word	0x20000088
- 8000cb4:	2000002c 	.word	0x2000002c
- 8000cb8:	2000004c 	.word	0x2000004c
- 8000cbc:	200000d0 	.word	0x200000d0
- 8000cc0:	20000084 	.word	0x20000084
+ 8000cb0:	20000074 	.word	0x20000074
+ 8000cb4:	20000018 	.word	0x20000018
+ 8000cb8:	20000038 	.word	0x20000038
+ 8000cbc:	200000bc 	.word	0x200000bc
+ 8000cc0:	20000070 	.word	0x20000070
 
 08000cc4 <Error_Handler>:
 /**
@@ -2029,11 +2029,11 @@ LoopFillZerobss:
   ldr  r0, =_sdata
  8000e6c:	20000000 	.word	0x20000000
   ldr  r3, =_edata
- 8000e70:	20000068 	.word	0x20000068
+ 8000e70:	20000054 	.word	0x20000054
   ldr  r2, =_sbss
- 8000e74:	20000068 	.word	0x20000068
+ 8000e74:	20000054 	.word	0x20000054
   ldr  r3, = _ebss
- 8000e78:	20000120 	.word	0x20000120
+ 8000e78:	2000010c 	.word	0x2000010c
 
 08000e7c <ADC_IRQHandler>:
  * @retval None       
@@ -2167,9 +2167,9 @@ __weak HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
  8000f12:	3708      	adds	r7, #8
  8000f14:	46bd      	mov	sp, r7
  8000f16:	bd80      	pop	{r7, pc}
- 8000f18:	2000005c 	.word	0x2000005c
- 8000f1c:	20000064 	.word	0x20000064
- 8000f20:	20000060 	.word	0x20000060
+ 8000f18:	20000048 	.word	0x20000048
+ 8000f1c:	20000050 	.word	0x20000050
+ 8000f20:	2000004c 	.word	0x2000004c
 
 08000f24 <HAL_IncTick>:
  * @note This function is declared as __weak to be overwritten in case of other 
@@ -2195,8 +2195,8 @@ __weak void HAL_IncTick(void)
  8000f3c:	f85d 7b04 	ldr.w	r7, [sp], #4
  8000f40:	4770      	bx	lr
  8000f42:	bf00      	nop
- 8000f44:	20000064 	.word	0x20000064
- 8000f48:	2000011c 	.word	0x2000011c
+ 8000f44:	20000050 	.word	0x20000050
+ 8000f48:	20000108 	.word	0x20000108
 
 08000f4c <HAL_GetTick>:
   * @note This function is declared as __weak to be overwritten in case of other 
@@ -2216,7 +2216,7 @@ __weak uint32_t HAL_GetTick(void)
  8000f58:	f85d 7b04 	ldr.w	r7, [sp], #4
  8000f5c:	4770      	bx	lr
  8000f5e:	bf00      	nop
- 8000f60:	2000011c 	.word	0x2000011c
+ 8000f60:	20000108 	.word	0x20000108
 
 08000f64 <__NVIC_SetPriorityGrouping>:
            In case of a conflict between priority grouping and available
@@ -4327,8 +4327,8 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
  8001b30:	40023c00 	.word	0x40023c00
  8001b34:	40023800 	.word	0x40023800
  8001b38:	08002560 	.word	0x08002560
- 8001b3c:	2000005c 	.word	0x2000005c
- 8001b40:	20000060 	.word	0x20000060
+ 8001b3c:	20000048 	.word	0x20000048
+ 8001b40:	2000004c 	.word	0x2000004c
 
 08001b44 <HAL_RCC_GetSysClockFreq>:
   *
@@ -4563,7 +4563,7 @@ uint32_t HAL_RCC_GetHCLKFreq(void)
  8001d00:	f85d 7b04 	ldr.w	r7, [sp], #4
  8001d04:	4770      	bx	lr
  8001d06:	bf00      	nop
- 8001d08:	2000005c 	.word	0x2000005c
+ 8001d08:	20000048 	.word	0x20000048
 
 08001d0c <HAL_RCC_GetPCLK1Freq>:
   * @note   Each time PCLK1 changes, this function must be called to update the

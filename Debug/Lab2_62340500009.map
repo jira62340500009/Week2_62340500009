@@ -2687,93 +2687,95 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000008002588                . = ALIGN (0x4)
                 0x0000000008002588                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000       0x68 load address 0x0000000008002588
+.data           0x0000000020000000       0x54 load address 0x0000000008002588
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
  *(.data*)
- .data.MY_ID    0x0000000020000000       0x2c Core/Src/main.o
+ .data.MY_ID    0x0000000020000000       0x16 Core/Src/main.o
                 0x0000000020000000                MY_ID
+ *fill*         0x0000000020000016        0x2 
  .data.ButtonMatrixPort
-                0x000000002000002c       0x20 Core/Src/main.o
-                0x000000002000002c                ButtonMatrixPort
+                0x0000000020000018       0x20 Core/Src/main.o
+                0x0000000020000018                ButtonMatrixPort
  .data.ButtonMatrixPin
-                0x000000002000004c       0x10 Core/Src/main.o
-                0x000000002000004c                ButtonMatrixPin
+                0x0000000020000038       0x10 Core/Src/main.o
+                0x0000000020000038                ButtonMatrixPin
  .data.SystemCoreClock
-                0x000000002000005c        0x4 Core/Src/system_stm32f4xx.o
-                0x000000002000005c                SystemCoreClock
+                0x0000000020000048        0x4 Core/Src/system_stm32f4xx.o
+                0x0000000020000048                SystemCoreClock
  .data.uwTickPrio
-                0x0000000020000060        0x4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
-                0x0000000020000060                uwTickPrio
+                0x000000002000004c        0x4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x000000002000004c                uwTickPrio
  .data.uwTickFreq
-                0x0000000020000064        0x1 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
-                0x0000000020000064                uwTickFreq
+                0x0000000020000050        0x1 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x0000000020000050                uwTickFreq
  *(.RamFunc)
  *(.RamFunc*)
-                0x0000000020000068                . = ALIGN (0x4)
- *fill*         0x0000000020000065        0x3 
-                0x0000000020000068                _edata = .
+                0x0000000020000054                . = ALIGN (0x4)
+ *fill*         0x0000000020000051        0x3 
+                0x0000000020000054                _edata = .
 
-.igot.plt       0x0000000020000068        0x0 load address 0x00000000080025f0
- .igot.plt      0x0000000020000068        0x0 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
-                0x0000000020000068                . = ALIGN (0x4)
+.igot.plt       0x0000000020000054        0x0 load address 0x00000000080025dc
+ .igot.plt      0x0000000020000054        0x0 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+                0x0000000020000054                . = ALIGN (0x4)
 
-.bss            0x0000000020000068       0xb8 load address 0x00000000080025f0
-                0x0000000020000068                _sbss = .
-                0x0000000020000068                __bss_start__ = _sbss
+.bss            0x0000000020000054       0xb8 load address 0x00000000080025dc
+                0x0000000020000054                _sbss = .
+                0x0000000020000054                __bss_start__ = _sbss
  *(.bss)
- .bss           0x0000000020000068       0x1c c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
+ .bss           0x0000000020000054       0x1c c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtbegin.o
  *(.bss*)
  .bss.ButtonMatrixState
-                0x0000000020000084        0x2 Core/Src/main.o
-                0x0000000020000084                ButtonMatrixState
- *fill*         0x0000000020000086        0x2 
+                0x0000000020000070        0x2 Core/Src/main.o
+                0x0000000020000070                ButtonMatrixState
+ *fill*         0x0000000020000072        0x2 
  .bss.ButtonMatrixTimestamp
-                0x0000000020000088        0x4 Core/Src/main.o
-                0x0000000020000088                ButtonMatrixTimestamp
+                0x0000000020000074        0x4 Core/Src/main.o
+                0x0000000020000074                ButtonMatrixTimestamp
  .bss.Timestamp
-                0x000000002000008c        0x4 Core/Src/main.o
-                0x000000002000008c                Timestamp
+                0x0000000020000078        0x4 Core/Src/main.o
+                0x0000000020000078                Timestamp
  .bss.Timestamp2
-                0x0000000020000090        0x4 Core/Src/main.o
-                0x0000000020000090                Timestamp2
- .bss.ID        0x0000000020000094       0x2c Core/Src/main.o
-                0x0000000020000094                ID
- .bss.number    0x00000000200000c0        0x4 Core/Src/main.o
-                0x00000000200000c0                number
- .bss.count     0x00000000200000c4        0x4 Core/Src/main.o
-                0x00000000200000c4                count
- .bss.check     0x00000000200000c8        0x4 Core/Src/main.o
-                0x00000000200000c8                check
+                0x000000002000007c        0x4 Core/Src/main.o
+                0x000000002000007c                Timestamp2
+ .bss.ID        0x0000000020000080       0x2c Core/Src/main.o
+                0x0000000020000080                ID
+ .bss.number    0x00000000200000ac        0x4 Core/Src/main.o
+                0x00000000200000ac                number
+ .bss.count     0x00000000200000b0        0x4 Core/Src/main.o
+                0x00000000200000b0                count
+ .bss.check     0x00000000200000b4        0x4 Core/Src/main.o
+                0x00000000200000b4                check
  .bss.count_count
-                0x00000000200000cc        0x4 Core/Src/main.o
-                0x00000000200000cc                count_count
+                0x00000000200000b8        0x4 Core/Src/main.o
+                0x00000000200000b8                count_count
  .bss.ButtonMatrixRow
-                0x00000000200000d0        0x1 Core/Src/main.o
-                0x00000000200000d0                ButtonMatrixRow
+                0x00000000200000bc        0x1 Core/Src/main.o
+                0x00000000200000bc                ButtonMatrixRow
  *(COMMON)
- *fill*         0x00000000200000d1        0x3 
- COMMON         0x00000000200000d4       0x48 Core/Src/main.o
-                0x00000000200000d4                OK
-                0x00000000200000d8                huart2
-                0x0000000020000118                ON_LED
- COMMON         0x000000002000011c        0x4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
-                0x000000002000011c                uwTick
-                0x0000000020000120                . = ALIGN (0x4)
-                0x0000000020000120                _ebss = .
-                0x0000000020000120                __bss_end__ = _ebss
+ *fill*         0x00000000200000bd        0x3 
+ COMMON         0x00000000200000c0       0x48 Core/Src/main.o
+                0x00000000200000c0                OK
+                0x00000000200000c4                huart2
+                0x0000000020000104                ON_LED
+ COMMON         0x0000000020000108        0x4 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+                0x0000000020000108                uwTick
+                0x000000002000010c                . = ALIGN (0x4)
+                0x000000002000010c                _ebss = .
+                0x000000002000010c                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020000120      0x600 load address 0x00000000080025f0
-                0x0000000020000120                . = ALIGN (0x8)
+                0x000000002000010c      0x604 load address 0x00000000080025dc
+                0x0000000020000110                . = ALIGN (0x8)
+ *fill*         0x000000002000010c        0x4 
                 [!provide]                        PROVIDE (end = .)
-                0x0000000020000120                PROVIDE (_end = .)
-                0x0000000020000320                . = (. + _Min_Heap_Size)
- *fill*         0x0000000020000120      0x200 
-                0x0000000020000720                . = (. + _Min_Stack_Size)
- *fill*         0x0000000020000320      0x400 
-                0x0000000020000720                . = ALIGN (0x8)
+                0x0000000020000110                PROVIDE (_end = .)
+                0x0000000020000310                . = (. + _Min_Heap_Size)
+ *fill*         0x0000000020000110      0x200 
+                0x0000000020000710                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020000310      0x400 
+                0x0000000020000710                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -2821,17 +2823,17 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x0000000000000358       0x22 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
 OUTPUT(Lab2_62340500009.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0x57fb
- .debug_info    0x0000000000000000      0xd3c Core/Src/main.o
- .debug_info    0x0000000000000d3c      0x963 Core/Src/stm32f4xx_hal_msp.o
- .debug_info    0x000000000000169f      0x20a Core/Src/stm32f4xx_it.o
- .debug_info    0x00000000000018a9      0x57e Core/Src/system_stm32f4xx.o
- .debug_info    0x0000000000001e27       0x22 Core/Startup/startup_stm32f411retx.o
- .debug_info    0x0000000000001e49      0x8d5 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
- .debug_info    0x000000000000271e      0xd98 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
- .debug_info    0x00000000000034b6      0x7d7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
- .debug_info    0x0000000000003c8d      0x92a Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
- .debug_info    0x00000000000045b7     0x1244 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
+.debug_info     0x0000000000000000     0x580b
+ .debug_info    0x0000000000000000      0xd4c Core/Src/main.o
+ .debug_info    0x0000000000000d4c      0x963 Core/Src/stm32f4xx_hal_msp.o
+ .debug_info    0x00000000000016af      0x20a Core/Src/stm32f4xx_it.o
+ .debug_info    0x00000000000018b9      0x57e Core/Src/system_stm32f4xx.o
+ .debug_info    0x0000000000001e37       0x22 Core/Startup/startup_stm32f411retx.o
+ .debug_info    0x0000000000001e59      0x8d5 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o
+ .debug_info    0x000000000000272e      0xd98 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o
+ .debug_info    0x00000000000034c6      0x7d7 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o
+ .debug_info    0x0000000000003c9d      0x92a Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o
+ .debug_info    0x00000000000045c7     0x1244 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o
 
 .debug_abbrev   0x0000000000000000     0x112a
  .debug_abbrev  0x0000000000000000      0x250 Core/Src/main.o
